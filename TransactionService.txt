@@ -1,0 +1,33 @@
+//Transaction microservice documentation
+
+*all method documentation is in the code in the microservice's files: "ITransactionService.cs" and "TransactionService.cs"
+
+to test this microservice, please add it to your code and create a controller for it. in this project we have "TransactionController.cs"
+
+
+endpoints:
+
+POST
+	-http://localhost:{port}/api/transactions/deposit/{accountNumber}/{amount}
+	-http://localhost:{port}/api/transactions/withdraw/{accountNumber}/{amount}
+
+actions:
+		
+1. POST - Make a deposit 
+
+usage: POST http://localhost:{port}/api/transactions/deposit/{accountNumber}/{amount}
+
+example with curl from terminal:
+"curl -i -X POST http://localhost:5207/api/transactions/deposit/004/100"
+	-this returns OK(202) with custom string with the accounts updated balance: 
+		output: "Account 004's current balance: -350"
+		
+		
+2. POST - Make a withdraw 
+
+usage: POST http://localhost:{port}/api/transactions/withdraw/{accountNumber}/{amount}
+
+example with curl from terminal:
+"curl -i -X POST http://localhost:5207/api/transactions/withdraw/003/100"
+	-this returns OK(202) with custom string with the accounts updated balance: 
+		output: "Account 003's current balance: 207"

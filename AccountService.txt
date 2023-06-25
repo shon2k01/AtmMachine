@@ -1,0 +1,43 @@
+//Account microservice documentation
+
+*all method documentation is in the code in the microservice's files: "IAccountService.cs" and "AccountService.cs"
+
+to test this microservice, please add it to your code and create a controller for it. in this project we have "AccountController.cs"
+
+
+endpoints:
+PUT - http://localhost:{port}/api/accounts/new/{accountNumber}/{balance}
+GET - http://localhost:{port}/api/accounts/{accountNumber}
+POST - http://localhost:{port}/api/accounts/update/{accountNumber}/{newBalance}
+
+actions:
+1. PUT - Create new Account. 
+
+usage: PUT http://localhost:{port}/api/accounts/new/{accountNumber}/{balance}
+
+example with curl from terminal:
+"curl -i -X PUT http://localhost:5207/api/accounts/new/001/60"
+	-this creates an account with accountName set to "001" and the balance set to 60
+	-returns OK(202) with a custom string
+		output:"Account added succesfully"
+NOTE: please make sure both "accountName" and "balance" are numerical.
+
+
+2. GET - Get account's balance. 
+
+usage: GET http://localhost:{port}/api/accounts/{accountNumber}
+
+example with curl from terminal:
+"curl -i -X GET http://localhost:5207/api/accounts/004"
+	-this returns OK(202) with a string with the accounts balance: 
+		output: "Account 004's current balance: -400"
+		
+
+3. POST - Update account's balance. 
+
+usage: GET http://localhost:{port}/api/accounts/update/{accountNumber}/{newBalance}
+
+example with curl from terminal:
+"curl -i -X POST http://localhost:5207/api/accounts/update/004/-450"
+	-this returns OK(202) with a string with the accounts updated balance: 
+		output: "Account 004's current balance: -450"
